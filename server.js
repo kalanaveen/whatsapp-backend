@@ -9,10 +9,11 @@ import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 9000;
 
+//using pusher for realtime messages
 const pusher = new Pusher({
-    appId: "1209136",
-    key: "cc7a4d075895a2a46399",
-    secret: "4936928334762bb4bc44",
+    appId: "",
+    key: "",
+    secret: "",
     cluster: "ap2",
     useTLS: true
 });
@@ -21,7 +22,7 @@ app.use(express.json());
 app.use(cors());
 
 // db config zLQBh3n7Cxsgssiy
-const connection_url = 'mongodb+srv://admin:zLQBh3n7Cxsgssiy@cluster0.br2ij.mongodb.net/whatsappdb?retryWrites=true&w=majority';
+const connection_url = '';
 
 mongoose.connect(connection_url, {
     useCreateIndex: true,
@@ -55,7 +56,7 @@ db.once("open", () => {
     });
 });
 
-// ????
+
 
 // api routes 
 app.get('/', (req, res) => res.status(200).send('hello sir how are u'));
@@ -81,6 +82,7 @@ app.post('/messages/new', (req, res) => {
     })
 
 })
+
 // listen
 app.listen(port, () => console.log(`listen local host ${port}`));
 
